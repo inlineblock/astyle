@@ -1,0 +1,25 @@
+{
+  "name": "@inlineblock/styler",
+  "version": "0.0.0",
+  "description": "CSS tool that creates atomic styles and can inline css for emails",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inlineblock/styler.git"
+  },
+  "keywords": [
+    "css",
+    "atomic",
+    "react",
+    "styles"
+  ],
+  "author": "Dennis Wilkins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inlineblock/styler/issues"
+  },
+  "homepage": "https://github.com/inlineblock/styler#readme"
+}
