@@ -104,7 +104,10 @@ const styles = styler.create({
 export default function Button({children, onClick, design}) {
   // the order applied here in cx determines the style precedence, like an object merge
   return (
-    <ButtonImpl cx={[design === "blue" && styles.blue, design === "red" && styles.red]} onClick={onClick}>
+    <ButtonImpl
+      cx={[design === "blue" && styles.blue, design === "red" && styles.red]}
+      onClick={onClick}
+    >
       {children}
     </ButtonImpl>
   );
