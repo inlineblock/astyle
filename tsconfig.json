@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "paths": {
+      "@astyle/*": ["./packages/*/src"]
+    },
+    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "es6",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "typeRoots": ["node_modules/@types", "typings"]
+  },
+  "include": ["src/*.ts", "src/*.tsx"],
+  "exclude": ["node_modules"]
+}

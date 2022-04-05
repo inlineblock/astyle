@@ -102,3 +102,13 @@ dist
 
 # TernJS port file
 .tern-port
+
+.npm
+.env
+
+lib/
+esm/
+types/
+dist/
+build/
+tsconfig.tsbuildinfo

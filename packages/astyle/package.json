@@ -1,0 +1,45 @@
+{
+  "name": "@astyle/astyle",
+  "version": "0.0.0",
+  "description": "CSS tool that creates atomic styles and can inline css for emails",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inlineblock/astyle.git"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "css",
+    "atomic",
+    "react",
+    "styles"
+  ],
+  "author": "Dennis Wilkins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inlineblock/astyle/issues"
+  },
+  "homepage": "https://github.com/inlineblock/astyle#readme",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@types/react": "^17.0.43",
+    "csstype": "^3.0.11",
+    "react": "^18.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/types": "^7.17.0",
+    "typescript": "^4.6.3"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  }
+}
