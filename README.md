@@ -32,14 +32,12 @@ import expansion from "./transforms/expansion";
 import fixPixelRemNumbers from "./transforms/fixPixelRemNumbers";
 
 // This file is the instance of astyle, you'd want one per config, probably one per site
-const astyle = new astyle<Styles>({
-  production: false, // if true, we don't do hashing at all.
-  inline: false, // if true, we use style instead of className (for emails)
+const myAstyle = astyle<Styles>({
+  mode: "inject", // inline for using style tag when using jsx helpers, inject to do it at runtime, noop meant for the future in prod builds
   transforms: [expansion, fixPixelRemNumbers], // array of ordered transforms that change input to a different output
 });
 
-export default astyle;
-export const cx = astyle.cx;
+export default myAstyle;
 ```
 
 
