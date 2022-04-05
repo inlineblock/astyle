@@ -1,5 +1,5 @@
-# styler
-CSS tool that creates atomic styles and works with inline too for SSR'ing emails
+# astyle
+CSS-in-JS tool that creates atomic styles and works with inline too for SSR'ing emails
 
 # to Install
 
@@ -12,9 +12,9 @@ Uh this doesn't exist on npm yet
 
 Copy the code from src into your library
 
-### Make your styler instance
+### Make your astyle instance
 
-You need to make your own instance of styler.
+You need to make your own instance of astyle.
 The main reason to do this is so you can define the types of what CSS you find acceptable for your project.
 I practical example is disallowing float, z-index, etc.
 Another common thing is only allowing padding and margins within your design system. Maybe you only allow 2px, 8px, 12px, 16px, and 20px padding.
@@ -25,21 +25,21 @@ Maybe you want to automatically expand something like "padding: 2px" to all 4 to
 
 
 ```typescript
-import Styler from "lib/styler";
+import astyle from "lib/astyle";
 
 import type {Styles} from "./CSSStyles";
 import expansion from "./transforms/expansion";
 import fixPixelRemNumbers from "./transforms/fixPixelRemNumbers";
 
-// This file is the instance of styler, you'd want one per config, probably one per site
-const styler = new Styler<Styles>({
+// This file is the instance of astyle, you'd want one per config, probably one per site
+const astyle = new astyle<Styles>({
   production: false, // if true, we don't do hashing at all.
   inline: false, // if true, we use style instead of className (for emails)
   transforms: [expansion, fixPixelRemNumbers], // array of ordered transforms that change input to a different output
 });
 
-export default styler;
-export const cx = styler.cx;
+export default astyle;
+export const cx = astyle.cx;
 ```
 
 
@@ -52,7 +52,7 @@ You can actually inject themes that override themes, which is cool, so you can h
 ```typescript
 import Head from "next/head";
 import React from "react";
-import ThemeRoot from "styler/ThemeRoot";
+import ThemeRoot from "astyle/ThemeRoot";
 import type {AppProps, AppContext} from "next/app";
 import {cssVariables} from "myinstance/Theme";
 
@@ -74,10 +74,10 @@ export default MyApp;
 ### Create some styles
 
 ```Button.tsx
-import styler from "myinstance/styler"
+import astyle from "myinstance/astyle"
 
 // this will create a container element
-const ButtonImpl = styler.button({
+const ButtonImpl = astyle.jsx('button')({
   border: '1px solid black',
   backgroundColor: 'lightgray',
   ':hover': {
@@ -86,7 +86,7 @@ const ButtonImpl = styler.button({
 });
 
 // this creates mixable styles to any component
-const styles = styler.create({
+const styles = astyle.create({
   blue: {
     backgroundColor: 'var(--blue-color)',
     ':hover': {
@@ -118,13 +118,12 @@ export default function Button({children, onClick, design}) {
 
 ### Inline CSS
 
-Tbh right now my email components are actually different components, because I used styler.inline,
+Tbh right now my email components are actually different components, because I used astyle
 but we could do a context
 
 
 ```typescript
 
-import StylerInlineContext from "myinstance/styler";
 
 import EmailLayout from "layouts/EmailLayout";
 import Button from "components/Button";
@@ -134,14 +133,11 @@ interface Props {
   user: any;
 }
 export default function WelcomeEmail({user}: Props) {
-   // StylerInlineContext.Provider could signal to the renderer to not apply as className but just merge into styles
    return (
-     <StylerInlineContext.Provider value={true}>
-       <EmailLayout>
-          <Heading>Welcome to Styler, {user.name}</Heading>
-          <Button design="blue" href="http://mywebsite.com/login">Login</Button>
-       </EmailLayout>
-     </StylerInlineContext.Provider>
+     <EmailLayout>
+        <Heading>Welcome to astyle, {user.name}</Heading>
+        <Button design="blue" href="http://mywebsite.com/login">Login</Button>
+     </EmailLayout>
    );
 }
 
